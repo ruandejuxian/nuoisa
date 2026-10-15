@@ -61,7 +61,9 @@
       <div class="sign">Nuôi Sả đi mà</div>
     </div>
     <!-- Bụng đói -->
-    <div class="belly"></div>
+    <div class="belly">
+      <button id="feedBtn" class="feed-btn">Cho Sả ăn</button>
+    </div>
   </div>
   <!-- Bong bóng thoại -->
   <div class="speech-bubble" id="speech">Đói quá rồi...</div>
@@ -79,21 +81,58 @@
 <section class="about">
   <div class="container">
     <h2 class="section-title">Về Sả</h2>
-    <p class="about-subtitle" style="text-align:center;font-size:1.35rem;color:#555;max-width:900px;margin:0 auto 50px;">
-  Câu chuyện của một người trẻ đang cần sự hỗ trợ từ cộng đồng<br><br>
-  <strong>Hãy cùng nhìn, cùng xót xa, cùng yêu thương</strong><br>
-  Đây là một hành trình đầy cảm xúc và bài học.
-</p>
-    <div class="about-grid">
-      <img src="image/cusa.jpg" alt="Sả nè" class="about-img">
-      <div class="about-text">
-        <p>Xin chào các anh chị nuôi thân mến! Sả là một người trẻ đầy tham vọng, đang sống tại thành phố với chi phí sinh hoạt ngày càng cao ngất ngưởng.</p>
-        <p>Từ năm 2026, Sả đã nhận ra rằng: <strong>“Tài sản lớn nhất của đời người là được người khác nuôi”</strong>. Đây là một mô hình thiện nguyện hoàn toàn mới, lấy cảm hứng từ các dự án thành công trước đó.</p>
-        <p>Với chỉ <strong>1.450.000đ/năm</strong>, các anh chị sẽ giúp Sả có đủ tiền trà sữa, cơm văn phòng,đùi gà, Netflix, cà phê Highlands mỗi sáng và các nhu cầu thiết yếu khác.</p>
-        <p>Sả cam kết sử dụng tiền cực kỳ minh bạch (có thể công khai sau 15 ngày kiểm tra). </p>
-        <p><strong>Lưu ý:</strong> Chi phí vận hành 1 tỷ đồng/năm là được lấy từ tiền lãi tiết kiệm gửi ngân hàng, không tính vào khoản đóng góp của các anh chị đâu nhé. </p>
+    
+    <!-- Menu ngang -->
+    <ul class="about-menu">
+      <li class="about-tab-btn active" onclick="openAbout(event, 'gioi-thieu')">Giới thiệu</li>
+      <li class="about-tab-btn" onclick="openAbout(event, 'album-anh')">Album ảnh</li>
+      <li class="about-tab-btn" onclick="openAbout(event, 'lien-he')">Liên hệ</li>
+    </ul>
+
+    <!-- Tab Giới thiệu (Giữ nguyên gốc) -->
+    <div id="gioi-thieu" class="about-tab-content active-content">
+      <p class="about-subtitle" style="text-align:center;font-size:1.35rem;color:#555;max-width:900px;margin:0 auto 50px;">
+        Câu chuyện của một người trẻ đang cần sự hỗ trợ từ cộng đồng<br><br>
+        <strong>Hãy cùng nhìn, cùng xót xa, cùng yêu thương</strong><br>
+        Đây là một hành trình đầy cảm xúc và bài học.
+      </p>
+      <div class="about-grid">
+        <img src="image/cusa.jpg" alt="Sả nè" class="about-img">
+        <div class="about-text">
+          <p>Xin chào các anh chị nuôi thân mến! Sả là một người trẻ đầy tham vọng, đang sống tại thành phố với chi phí sinh hoạt ngày càng cao ngất ngưởng.</p>
+          <p>Từ năm 2026, Sả đã nhận ra rằng: <strong>“Tài sản lớn nhất của đời người là được người khác nuôi”</strong>. Đây là một mô hình thiện nguyện hoàn toàn mới, lấy cảm hứng từ các dự án thành công trước đó.</p>
+          <p>Với chỉ <strong>1.450.000đ/năm</strong>, các anh chị sẽ giúp Sả có đủ tiền trà sữa, cơm văn phòng,đùi gà, Netflix, cà phê Highlands mỗi sáng và các nhu cầu thiết yếu khác.</p>
+          <p>Sả cam kết sử dụng tiền cực kỳ minh bạch (có thể công khai sau 15 ngày kiểm tra). </p>
+          <p><strong>Lưu ý:</strong> Chi phí vận hành 1 tỷ đồng/năm là được lấy từ tiền lãi tiết kiệm gửi ngân hàng, không tính vào khoản đóng góp của các anh chị đâu nhé. </p>
+        </div>
       </div>
     </div>
+
+    <!-- Tab Album ảnh (Cute, nữ tính) -->
+    <div id="album-anh" class="about-tab-content">
+      <div class="cute-gallery">
+        <!-- Lấy link ảnh minh họa trên mạng, boss có thể thay link thật sau -->
+        <img src="image/cusa.jpg" alt="Sả 1">
+        <img src="image/cusa3.jpg" alt="Sả 2">
+        <img src="image/cusa2.jpg" alt="Sả 3">
+        <img src="image/cusa4.jpg" alt="Sả 4">
+      </div>
+    </div>
+
+    <!-- Tab Liên hệ -->
+    <div id="lien-he" class="about-tab-content">
+      <div class="contact-box">
+        <h3 style="font-size:2.2rem; color:var(--main); margin-bottom:15px;">Kết nối với Sả nha 💕</h3>
+        <p style="font-size:1.15rem; color:#666; margin-bottom:30px;">Boss nhớ theo dõi Sả trên mọi mặt trận để không bỏ lỡ khoảnh khắc đáng yêu nào nhé!</p>
+        <div class="social-icons-large">
+          <a href="#" class="social-btn facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+          <a href="https://tiktok.com/@thng_1004" class="social-btn instagram"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="https://tiktok.com/@cusa_03" class="social-btn tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+          <a href="#" class="social-btn zalo"><i class="fas fa-comment-dots"></i> Zalo</a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -147,89 +186,152 @@
 <section class="packages-section" id="packages">
   <div class="container">
     <h2 class="section-title">Chọn gói Nuôi Sả nào boss</h2>
-    <div class="packages">
-      <!-- Gói Cơ Bản -->
-      <div class="package">
-        <div class="package-header">
-          <h3>Gói Cơ Bản</h3>
-          <div class="price">450.000<span>đ</span><small>/3 tháng</small></div>
+    
+    <!-- Menu Tabs cho Gói -->
+    <div class="package-tabs">
+      <button class="pkg-tab-btn active" onclick="openPackage(event, 'super-fan')">Dành cho Super Fan</button>
+      <button class="pkg-tab-btn" onclick="openPackage(event, 'normal-fan')">Dành cho Fan</button>
+    </div>
+
+    <!-- Tab Super Fan (Giao diện gốc) -->
+    <div id="super-fan" class="pkg-tab-content active-content">
+      <div class="packages">
+        <!-- Gói Cơ Bản -->
+        <div class="package">
+          <div class="package-header">
+            <h3>Gói Cơ Bản</h3>
+            <div class="price">800.000<span>đ</span><small>/3 tháng</small></div>
+          </div>
+          <div class="features">
+            <ul>
+              <li><i class="fas fa-check"></i> Trà sữa 10 ly</li>
+              <li><i class="fas fa-check"></i> Đùi gà 8 cái</li>
+              <li><i class="fas fa-check"></i> Cơm văn phòng 10 bữa</li>
+              <li><i class="fas fa-times"></i> Netflix (dùng chung)</li>
+              <li><i class="fas fa-check"></i> Ảnh cập nhật định kỳ</li>
+            </ul>
+            <button class="btn" data-amount="450000" data-pack="Gói Cơ Bản">Chọn gói này</button>
+          </div>
         </div>
-        <div class="features">
-          <ul>
-            <li><i class="fas fa-check"></i> Trà sữa 45 ly</li>
-            <li><i class="fas fa-check"></i> Đùi gà 4 cái</li>
-            <li><i class="fas fa-check"></i> Cơm văn phòng 60 bữa</li>
-            <li><i class="fas fa-times"></i> Netflix (dùng chung)</li>
-            <li><i class="fas fa-check"></i> Ảnh cập nhật định kỳ</li>
-          </ul>
-          <button class="btn" data-amount="450000" data-pack="Gói Cơ Bản">Chọn gói này</button>
+
+        <!-- Gói Tiêu Chuẩn (HOT) -->
+        <div class="package popular">
+          <div class="package-header">
+            <h3>Gói Tiêu Chuẩn</h3>
+            <div class="price">2.000.000<span>đ</span><small>/năm</small></div>
+          </div>
+          <div class="features">
+            <ul>
+              <li><i class="fas fa-check"></i> Trà sữa + cà phê không giới hạn</li>
+              <li><i class="fas fa-check"></i> Cơm văn phòng 365 bữa</li>
+              <li><i class="fas fa-check"></i> Netflix Premium 4K</li>
+              <li><i class="fas fa-check"></i> Xăng xe 5 củ/năm</li>
+              <li><i class="fas fa-crown" style="color:gold"></i> Mã NT độc quyền</li>
+              <li><i class="fas fa-video"></i> Video call 10 phút/tháng</li>
+            </ul>
+            <button class="btn hot" data-amount="1450000" data-pack="Gói Tiêu Chuẩn">HOT NHẤT – Chọn ngay!</button>
+          </div>
+        </div>
+
+        <!-- Gói VIP -->
+        <div class="package">
+          <div class="package-header">
+            <h3>Gói VIP</h3>
+            <div class="price">5.000.000<span>đ</span><small>/năm</small></div>
+          </div>
+          <div class="features">
+            <ul>
+              <li><i class="fas fa-crown" style="color:gold"></i> Starbucks mỗi ngày</li>
+              <li><i class="fas fa-crown" style="color:gold"></i> Ăn nhà hàng 2 lần/tháng</li>
+              <li><i class="fas fa-crown" style="color:gold"></i> Du lịch 1 chuyến/năm</li>
+              <li><i class="fas fa-crown" style="color:gold"></i> Tên khắc lên web vĩnh viễn</li>
+              <li><i class="fas fa-crown" style="color:gold"></i> Video call 20 phút/tuần</li>
+              <li><i class="fas fa-tshirt"></i> Áo “Boss đang Nuôi Sả”</li>
+            </ul>
+            <button class="btn" data-amount="5000000" data-pack="Gói VIP">Làm đại gia luôn!</button>
+          </div>
         </div>
       </div>
-
-      <!-- Gói Tiêu Chuẩn (HOT) -->
-      <div class="package popular">
-        <div class="package-header" > <!-- style="background:#237804" -->
-          <h3>Gói Tiêu Chuẩn</h3>
-          <div class="price">1.450.000<span>đ</span><small>/năm</small></div>
+      
+      <!-- Gói Ultra VIP -->
+      <div class="package ultra-vip" style="grid-column:1/-1;margin-top:40px;">
+        <div class="package-header" style="background: linear-gradient(135deg, #722ed1, #d3adf7); color:white;">
+          <h3>Gói Ultra VIP – Đại Gia Chỉ Đường</h3>
+          <div class="price" style="font-size:4rem;">50.000.000đ <small>/ năm</small></div>
+          <p style="font-style:italic; color:#ffeb3b; margin:8px 0; font-weight:bold;">→ Sả sẽ làm osin cho boss 1 ngày (có hợp đồng công chứng)</p>
         </div>
-        <div class="features">
+        <div class="features" style="color:#333">
           <ul>
-            <li><i class="fas fa-check"></i> Trà sữa + cà phê không giới hạn</li>
-            <li><i class="fas fa-check"></i> Cơm văn phòng 365 bữa</li>
-            <li><i class="fas fa-check"></i> Netflix Premium 4K</li>
-            <li><i class="fas fa-check"></i> Xăng xe 5 củ/năm</li>
-            <li><i class="fas fa-crown" style="color:gold"></i> Mã NT độc quyền</li>
-            <li><i class="fas fa-video"></i> Video call 10 phút/tháng</li>
+            <li>Sả dọn nhà, nấu cơm, giặt đồ cho boss</li>
+            <li>Mặc áo in mặt boss đi khắp Thủ Đô</li>
+            <li>Đặt tên con sau này là tên boss</li>
+            <li>Gọi boss là "sugar daddy/mommy" công khai</li>
+            <li>Quyền ưu tiên book lịch Sả 24/7</li>
           </ul>
-          <button class="btn hot" data-amount="1450000" data-pack="Gói Tiêu Chuẩn">HOT NHẤT – Chọn ngay!</button>
-        </div>
-      </div>
-
-      <!-- Gói VIP -->
-      <div class="package">
-        <div class="package-header" > <!-- style="background:#1e6b00" -->
-          <h3>Gói VIP</h3>
-          <div class="price">5.000.000<span>đ</span><small>/năm</small></div>
-        </div>
-        <div class="features">
-          <ul>
-            <li><i class="fas fa-crown" style="color:gold"></i> Starbucks mỗi ngày</li>
-            <li><i class="fas fa-crown" style="color:gold"></i> Ăn nhà hàng 2 lần/tháng</li>
-            <li><i class="fas fa-crown" style="color:gold"></i> Du lịch 1 chuyến/năm</li>
-            <li><i class="fas fa-crown" style="color:gold"></i> Tên khắc lên web vĩnh viễn</li>
-            <li><i class="fas fa-tshirt"></i> Áo “Boss đang Nuôi Sả”</li>
-          </ul>
-          <button class="btn" data-amount="5000000" data-pack="Gói VIP">Làm đại gia luôn!</button>
+          <button class="btn" data-amount="50000000" data-pack="Gói Ultra VIP">Làm chồng em nhé!</button>
         </div>
       </div>
     </div>
+
+    <!-- Tab Fan (3 Gói bổ sung nhẹ nhàng hơn) -->
+    <div id="normal-fan" class="pkg-tab-content">
+      <div class="packages">
+        <!-- Gói 1 -->
+        <div class="package">
+          <div class="package-header">
+            <h3>Gói Fan Cứng</h3>
+            <div class="price">150.000<span>đ</span><small>/3 tháng</small></div>
+          </div>
+          <div class="features">
+            <ul>
+              <li><i class="fas fa-check"></i> Trà đá 2 ly</li>
+              <li><i class="fas fa-check"></i> Bánh mì 5 ổ</li>
+              <li><i class="fas fa-times"></i> Không có Netflix đâu</li>
+              <li><i class="fas fa-check"></i> Nhìn được nửa thân Sả thôi</li>
+            </ul>
+            <button class="btn" data-amount="150000" data-pack="Gói Fan Cứng">Chọn gói này</button>
+          </div>
+        </div>
+
+        <!-- Gói 2 -->
+        <div class="package popular">
+          <div class="package-header">
+            <h3>Gói Fan Chân Chính</h3>
+            <div class="price">650.000<span>đ</span><small>/năm</small></div>
+          </div>
+          <div class="features">
+            <ul>
+              <li><i class="fas fa-check"></i> Trà sữa 1 tháng 1 ly</li>
+              <li><i class="fas fa-check"></i> Cơm bình dân 1 bữa</li>
+              <li><i class="fas fa-check"></i> Đùi/ cánh gà 2 bữa</li>
+              <li><i class="fas fa-video"></i> Được xem mặt Sả 1 lần/tháng</li>
+            </ul>
+            <button class="btn hot" data-amount="450000" data-pack="Gói Fan Chân Chính">Cũng HOT – Chọn nha!</button>
+          </div>
+        </div>
+
+        <!-- Gói 3 -->
+        <div class="package">
+          <div class="package-header">
+            <h3>Gói Fan Cuồng</h3>
+            <div class="price">1.314.520<span>đ</span><small>/năm</small></div>
+          </div>
+          <div class="features">
+            <ul>
+              <li><i class="fas fa-crown" style="color:gold"></i> Highlands mỗi tuần 1 ly</li>
+              <li><i class="fas fa-crown" style="color:gold"></i> Lời cảm ơn viết tay</li>
+              <li><i class="fas fa-crown" style="color:gold"></i> Kết bạn trên mạng xã hội</li>
+              <li><i class="fas fa-crown" style="color:gold"></i> Album ảnh 10 cái/ 3 tháng</li>
+              <li><i class="fas fa-tshirt"></i> Video call 1 phút/tháng</li>
+            </ul>
+            <button class="btn" data-amount="999000" data-pack="Gói Fan Cuồng">Làm fan cuồng thôi!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
-
-<!-- Gói Ultra VIP + Lợi ích hài hước mới -->
-<style>
-.ultra-package { background: linear-gradient(135deg, #722ed1, #d3adf7); color:white; }
-.ultra-package .price { font-size:4rem; }
-.fun-benefit { font-style:italic; color:#ffeb3b; margin:8px 0; font-weight:bold; }
-</style>
-
-<div class="package ultra-vip" style="grid-column:1/-1;margin-top:40px;">
-  <div class="package-header ultra-package">
-    <h3>Gói Ultra VIP – Đại Gia Chỉ Đường</h3>
-    <div class="price">50.000.000đ <small>/ năm</small></div>
-    <p class="fun-benefit">→ Sả sẽ làm osin cho boss 1 ngày (có hợp đồng công chứng)</p>
-  </div>
-  <div class="features" style="color:#333">
-    <ul>
-      <li>Sả dọn nhà, nấu cơm, giặt đồ cho boss</li>
-      <li>Mặc áo in mặt boss đi khắp Sài Gòn</li>
-      <li>Đặt tên con sau này là tên boss</li>
-      <li>Gọi boss là "sugar daddy/mommy" công khai</li>
-      <li>Quyền ưu tiên book lịch Sả 24/7</li>
-    </ul>
-    <button class="btn" data-amount="50000000" data-pack="Gói Ultra VIP">Làm chồng em nhé!</button>
-  </div>
-</div>
 
 <!-- Nhật ký được nuôi (tự cập nhật) -->
 <section class="diary">
@@ -270,7 +372,7 @@
       <div class="trans-row"><span>Cơm văn phòng (25.000đ × 200 bữa)</span><strong>500.000đ</strong></div>
       <div class="trans-row"><span>Netflix Premium</span><strong>260.000đ</strong></div>
       <div class="trans-row"><span>Cafe Highlands (mỗi sáng)</span><strong>1.095.000đ</strong></div>
-      <div class="trans-row"><span>Thời đại anh hùng</span><strong>550.000đ</strong></div>
+      <div class="trans-row"><span>Liên quân mobile</span><strong>550.000đ</strong></div>
       <div class="trans-row"><span>Chăm sóc cá nhân</span><strong>850.000đ</strong></div>
       <div class="trans-row"><span>Quà sinh nhật bản thân</span><strong>2.000.000đ</strong></div>
       <div class="trans-row"><span>Data 4G không giới hạn</span><strong>360.000đ</strong></div>
@@ -286,14 +388,57 @@
 <section class="testimonials">
   <div class="container">
     <h2 class="section-title">Lời nhận xét từ nhà hảo tâm</h2>
-    <div class="testimonial-grid">
-      <div class="testimonial"><p>“Sả đã ủng hộ 500 triệu đồng từ MV ‘Nấu mì cho em’. Dự án này thật ý nghĩa…”</p><strong>Rapper D.V</strong></div>
-      <div class="testimonial"><p>“600 triệu không phải con số nhỏ, nhưng nhìn thấy người được nuôi có cuộc sống tốt hơn thì rất vui…”</p><strong>Ca sĩ H.M</strong></div>
-      <div class="testimonial"><p>“Sả đã nuôi được 7 năm rồi và thấy rất minh bạch! Chỉ là họ chưa trả lời tin nhắn của Sả được 3 tháng thôi…”</p><strong>Chị T.T.T</strong></div>
-      <div class="testimonial"><p>“Blockchain là tương lai! Nếu dự án này dùng blockchain thì sẽ không có tranh cãi…”</p><strong>5 Phút Crypto</strong></div>
-      <div class="testimonial"><p>“Sả được nhận mã NT-12345 nhưng 3 tháng sau lại thấy mã này thuộc về người khác. Có lẽ do lệch pha thời gian đóng góp…”</p><strong>Anh A.P</strong></div>
-      <div class="testimonial"><p>“Sả làm tình nguyện viên được 5 ngày thì nghỉ vì công việc chủ yếu là… đòi tiền…”</p><strong>Cô M.L</strong></div>
+    
+    <!-- Menu Tabs -->
+    <div class="testimonial-tabs">
+      <button class="testi-tab-btn active" onclick="openTestimonial(event, 'celeb')">Người nổi tiếng (giấu tên)</button>
+      <button class="testi-tab-btn" onclick="openTestimonial(event, 'fans')">Fan của Sả</button>
     </div>
+
+    <!-- Tab 1: Người nổi tiếng -->
+    <div id="celeb" class="testi-tab-content active-content">
+      <div class="testimonial-grid">
+        <div class="testimonial">
+          <p>“Tôi đã ủng hộ 500 triệu đồng từ MV ‘Nấu mì cho em’. Dự án này thật ý nghĩa…”</p>
+          <strong>Rapper D.V</strong>
+        </div>
+        <div class="testimonial">
+          <p>“600 triệu không phải con số nhỏ, nhưng nhìn thấy người được nuôi có cuộc sống tốt hơn thì rất vui…”</p>
+          <strong>Ca sĩ H.M</strong>
+        </div>
+        <div class="testimonial">
+          <p>“Blockchain là tương lai! Nếu dự án này dùng blockchain thì sẽ không có tranh cãi…”</p>
+          <strong>5 Phút Crypto</strong>
+        </div>
+        <div class="testimonial">
+          <p>“Đã chuyển khoản sương sương 1 tỷ nuôi Sả, hy vọng Sả sớm ra MV chung với mình.”</p>
+          <strong>Chủ tịch S.T (Tùng núi)</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 2: Fan của Sả -->
+    <div id="fans" class="testi-tab-content">
+      <div class="testimonial-grid">
+        <div class="testimonial">
+          <p>“Sả đã nuôi được 3 tháng rồi, uy tín nha. Tôi còn được Sả làm mối cho bé Dâu xinh đẹp nữa, 10 điểm ”</p>
+          <strong>Mèo Tu Tiên</strong>
+        </div>
+        <div class="testimonial">
+          <p>“Chưa có nhiều xiền ủng hộ cho chị Sả nhưng chị Sả rất tốt bụng nhen mọi người. Cảm ơn chị đã cho em gặp được tình yêu đời mình”</p>
+          <strong>Bé Dâu</strong>
+        </div>
+        <div class="testimonial">
+          <p>“Sả hát hay xinh gái lắm mọi người. mua gói Vip để được ngắm Sả nhiều hơn nhé”</p>
+          <strong>Bảo Aidi</strong>
+        </div>
+        <div class="testimonial">
+          <p>“Đã donate gói Fan Cuồng, hy vọng tháng sau Sả sẽ nhớ mặt gọi tên mình một lần trên live.”</p>
+          <strong>1m70</strong>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -303,10 +448,10 @@
     <h2 class="section-title">Câu hỏi thường gặp</h2>
     <div class="faq-list">
       <div class="faq-item"><div class="faq-q">Tại sao phải nuôi bạn?<span>+</span></div><div class="faq-a">Bởi vì tôi là một phần của cộng đồng, và cộng đồng cần chăm sóc mọi thành viên. Việc nuôi tôi không chỉ giúp tôi có cuộc sống tốt hơn, mà còn tạo ra một mô hình thiện nguyện mới, đột phá và... đầy cảm hứng. <STRONG>QUAN TRỌNG LÀ TÔI XINH</STRONG> và đang đói.</div></div>
-      <div class="faq-item"><div class="faq-q">Tiền của Sả đi đâu?<span>+</span></div><div class="faq-a">Vào tài khoản cá nhân của tôi. Tôi sẽ dùng để mua đồ ăn, làm đẹp, tài khoản Netflix, còn lại là các khoản thiết yếu khác. Chúng tôi có thể công khai sao kê sau 15 ngày đóng băng tài khoản để kiểm tra.</div></div>
+      <div class="faq-item"><div class="faq-q">Tiền của tôi đi đâu?<span>+</span></div><div class="faq-a">Vào tài khoản cá nhân của tôi. Tôi sẽ dùng để mua đồ ăn, làm đẹp, tài khoản Netflix, còn lại là các khoản thiết yếu khác. Chúng tôi có thể công khai sao kê sau 15 ngày đóng băng tài khoản để kiểm tra.</div></div>
       <div class="faq-item"><div class="faq-q">Mã Nuôi Sả (NT) là gì?<span>+</span></div><div class="faq-a">Mã NT là mã định danh độc quyền cho mỗi nhà hảo tâm. Tuy nhiên, do lỗi bàn giao giữa các tình nguyện viên, có thể một mã sẽ được cấp cho nhiều người. Đây không phải là lỗi hệ thống, mà là tính năng để bảo vệ quyền riêng tư của... tôi.</div></div>
       <div class="faq-item"><div class="faq-q">Tại sao chi phí vận hành lại hơn 1 tỷ/năm?<span>+</span></div><div class="faq-a">Chi phí vận hành bao gồm: liên lạc với nhà hảo tâm (data 4G), khảo sát nhu cầu (đi cafe để suy nghĩ), hỗ trợ tình nguyện viên (1,5-3 triệu/lượt), và các chi phí quản lý khác. Đừng lo, khoản này không lấy từ tiền đóng góp của bạn đâu - nó được lấy từ lãi tiết kiệm của các khoản tiền... đóng góp của người khác.</div></div>
-      <div class="faq-item"><div class="faq-q">Sả có được xem ảnh cập nhật không?<span>+</span></div><div class="faq-a">Có chứ! Tùy vào gói ủng hộ, bạn sẽ nhận được ảnh cập nhật định kỳ về cuộc sống của tôi. Từ bữa trà sữa buổi chiều, đến màn hình Netflix đang xem, và cả selfie khi đi du lịch (gói VIP). Mọi thứ đều minh bạch và đầy... cảm xúc.... Nhưng chỉ khi Sả nhớ.</div></div>
+      <div class="faq-item"><div class="faq-q">Tôi có được xem ảnh cập nhật không?<span>+</span></div><div class="faq-a">Có chứ! Tùy vào gói ủng hộ, bạn sẽ nhận được ảnh cập nhật định kỳ về cuộc sống của tôi. Từ bữa trà sữa buổi chiều, đến màn hình Netflix đang xem, và cả selfie khi đi du lịch (gói VIP). Mọi thứ đều minh bạch và đầy... cảm xúc.... Nhưng chỉ khi Sả nhớ.</div></div>
       <div class="faq-item"><div class="faq-q">Nếu Sả nghi ngờ có sai phạm thì làm sao?<span>+</span></div><div class="faq-a">Hãy chờ đợi kết luận chính thức từ cơ quan chức năng (hoặc bạn tôi). Trong thời gian chờ, tài khoản đã được đóng băng 15 ngày để kiểm tra. Nếu có sai phạm, chúng tôi cam kết xử lý nghiêm minh. Nếu không có, chúng tôi sẽ tiếp tục hoạt động và mong nhận được sự ủng hộ của bạn!</div></div>
       <div class="faq-item"><div class="faq-q">Tại sao tổng chi phí lại nhiều hơn 1,45 triệu?<span>+</span></div><div class="faq-a">Đó là sức mạnh của "hiệu ứng cộng đồng"! Khi nhiều người cùng đóng góp, tổng số tiền sẽ lớn hơn và tôi có thể nâng cao chất lượng cuộc sống. Phần chênh lệch cũng có thể do tôi tính nhầm, hoặc do tỷ giá trà sữa tăng. Nhưng đừng lo, mọi thứ đều nằm trong tầm kiểm soát... của tôi.</div></div>
     </div>
@@ -339,9 +484,9 @@
     <!-- Cột 2: Liên hệ -->
     <div>
       <h4 class="footer-title">Liên hệ</h4>
-      <p>Email: support@nuoiSả.vn<br>
+      <p>Email: support@nuoiSa.vn<br>
          Hotline: 1900-NUOI-Sả<br>
-         TikTok: @_quynhcass_<br>
+         TikTok: @thng_1004<br>
          STK: 123456789 – Ngân hàng Tình Thương</p>
     </div>
 
@@ -352,10 +497,10 @@
 
       <!-- Icon mạng xã hội -->
       <div class="social-icons" style="margin-top:25px;">
-        <a href="https://facebook.com/cass.bii.227" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://instagram.com/_quynhcass_" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://tiktok.com/@_quynhcass_" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-        <a href="https://zalo.me/0909123456" target="_blank" aria-label="Zalo"><i class="fas fa-comment-dots"></i></a>
+        <a href="https://facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://tiktok.com/@thng_1004" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://zalo.me/" target="_blank" aria-label="Zalo"><i class="fas fa-comment-dots"></i></a>
       </div>
     </div>
 
@@ -381,6 +526,23 @@
     </div>
   </div>
 </footer>
+<!-- Modal Cho Sả Ăn (Tuỳ tâm) -->
+<div id="feedModal" class="modal">
+  <div class="modal-content" style="max-width: 400px;">
+    <span class="close-feed" style="position:absolute; top:15px; right:25px; font-size:3rem; cursor:pointer; color:#aaa;">×</span>
+    <h2 style="color:var(--main); margin-bottom:15px;">Cho Sả Ăn 🍲</h2>
+    
+    <div style="background:#f6ffed; padding:20px; border-radius:15px; border:2px dashed var(--main); text-align:left; font-size:1.15rem; color:#333; line-height:1.8;">
+      <p><strong>Ngân hàng:</strong> MB Bank</p>
+      <p><strong>Số tài khoản:</strong> 0396383071</p>
+      <p><strong>Chủ tài khoản:</strong> NGUYEN THAO NGUYEN</p>
+      <p><strong>Nội dung:</strong> CHO SA AN</p>
+      <p style="text-align:center; color:#ff4d4f; font-weight:bold; margin-top:15px;">Ủng hộ tuỳ tâm nha boss 💕</p>
+    </div>
+    
+    <button id="doneFeedBtn" class="btn" style="margin-top:20px;">Đã cho ăn xong!</button>
+  </div>
+</div>
 <!-- Modal QR -->
 <div id="qrModal" class="modal">
   <div class="modal-content">

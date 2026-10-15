@@ -81,13 +81,63 @@ document.addEventListener('DOMContentLoaded', function() {
   //   });
   // });
   // THAY ĐOẠN NÀY TRONG js/main.js (khoảng dòng 80–100)
-document.querySelectorAll('.btn[data-amount]').forEach(btn => {
-  btn.addEventListener('click', function() {
-    const amount = this.dataset.amount;
-    const pack = this.dataset.pack;
+// document.querySelectorAll('.btn[data-amount]').forEach(btn => {
+//   btn.addEventListener('click', function() {
+//     const amount = this.dataset.amount;
+//     const pack = this.dataset.pack;
+//     const note = `NuoiTui ${pack}`;
+
+//     // Nội dung ngắn gọn để tránh lỗi overflow
+//     const qrText = `https://img.vietqr.io/image/MB-0123456789-compact2.png?amount=${amount}&addInfo=${note}`;
+
+//     document.getElementById('modalTitle').innerHTML = `${pack}<br><strong style="font-size:2rem">${parseInt(amount).toLocaleString('vi-VN')}đ</strong>`;
+//     document.getElementById('note').textContent = note;
+
+//     const qrDiv = document.getElementById('qrcode');
+//     qrDiv.innerHTML = ''; // xóa cũ
+
+//     // DÙNG ẢNH QR TĨNH HOẶC LINK NGẮN ĐỂ TRÁNH LỖI
+//     // Cách 1: Dùng ảnh QR tĩnh (khuyên dùng, không bao giờ lỗi)
+//     const staticQR = {
+//       "Gói Cơ Bản": "/qr.jpg",
+//       "Gói Tiêu Chuẩn": "image/qr.jpg",
+//       "Gói VIP": "image/qr.jpg",
+//       "Gói Ultra VIP": "image/qr.jpg"
+//     };
+
+//     if (staticQR[pack]) {
+//       const img = document.createElement('img');
+//       img.src = staticQR[pack];
+//       img.style.cssText = "width:280px;height:280px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.3);";
+//       qrDiv.appendChild(img);
+//     } else {
+//       // Cách 2: Nếu vẫn muốn dùng QR động thì rút ngắn nội dung
+//       new QRCode(qrDiv, {
+//         text: qrText,
+//         width: 280,
+//         height: 280,
+//         colorDark: "#000",
+//         colorLight: "#fff",
+//         correctLevel: QRCode.CorrectLevel.L   // ← QUAN TRỌNG: giảm level xuống L để chứa nội dung dài hơn
+//       });
+//     }
+
+//     qrModal.style.display = 'flex';
+//     if (this.classList.contains('hot')) shootConfetti();
+//   });
+// });
+
+// =========================================
+// FIX LỖI CLICK CHỌN GÓI BẰNG EVENT DELEGATION
+// =========================================
+document.addEventListener('click', function(e) {
+  // Bắt sự kiện cho tất cả các nút có class 'btn' và thuộc tính 'data-amount'
+  if (e.target && e.target.classList.contains('btn') && e.target.hasAttribute('data-amount')) {
+    const amount = e.target.dataset.amount;
+    const pack = e.target.dataset.pack;
     const note = `NuoiTui ${pack}`;
 
-    // Nội dung ngắn gọn để tránh lỗi overflow
+    // Nội dung ngắn gọn để tránh lỗi overflow khi quét QR
     const qrText = `https://img.vietqr.io/image/MB-0123456789-compact2.png?amount=${amount}&addInfo=${note}`;
 
     document.getElementById('modalTitle').innerHTML = `${pack}<br><strong style="font-size:2rem">${parseInt(amount).toLocaleString('vi-VN')}đ</strong>`;
@@ -96,36 +146,83 @@ document.querySelectorAll('.btn[data-amount]').forEach(btn => {
     const qrDiv = document.getElementById('qrcode');
     qrDiv.innerHTML = ''; // xóa cũ
 
-    // DÙNG ẢNH QR TĨNH HOẶC LINK NGẮN ĐỂ TRÁNH LỖI
-    // Cách 1: Dùng ảnh QR tĩnh (khuyên dùng, không bao giờ lỗi)
+    // Cập nhật thêm các gói Fan vào danh sách QR tĩnh
     const staticQR = {
-      "Gói Cơ Bản": "images/qr-co-ban.jpg",
-      "Gói Tiêu Chuẩn": "images/qr-tieu-chuan.jpg",
-      "Gói VIP": "images/qr-vip.jpg",
-      "Gói Ultra VIP": "images/qr-ultra.jpg"
+      "Gói Cơ Bản": "image/qr.jpg",
+      "Gói Tiêu Chuẩn": "image/qr.jpg",
+      "Gói VIP": "image/qr.jpg",
+      "Gói Ultra VIP": "image/qr.jpg",
+      "Gói Fan Cứng": "image/qr.jpg",
+      "Gói Fan Chân Chính": "image/qr.jpg",
+      "Gói Fan Cuồng": "image/qr.jpg"
     };
 
     if (staticQR[pack]) {
       const img = document.createElement('img');
-      img.src = staticQR[pack];
+      img.src = staticQR[pack]; // Nếu không có ảnh thực, nó sẽ hiện icon vỡ ảnh, lúc đó nên dùng mã QR động bên dưới
       img.style.cssText = "width:280px;height:280px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.3);";
+      
+      // Bắt lỗi nếu file ảnh không tồn tại thì fallback về QR động
+      img.onerror = function() {
+        qrDiv.innerHTML = '';
+        new QRCode(qrDiv, { text: qrText, width: 280, height: 280, colorDark: "#000", colorLight: "#fff", correctLevel: QRCode.CorrectLevel.L });
+      };
       qrDiv.appendChild(img);
     } else {
-      // Cách 2: Nếu vẫn muốn dùng QR động thì rút ngắn nội dung
+      // Dùng QR động
       new QRCode(qrDiv, {
         text: qrText,
         width: 280,
         height: 280,
         colorDark: "#000",
         colorLight: "#fff",
-        correctLevel: QRCode.CorrectLevel.L   // ← QUAN TRỌNG: giảm level xuống L để chứa nội dung dài hơn
+        correctLevel: QRCode.CorrectLevel.L
       });
     }
 
-    qrModal.style.display = 'flex';
-    if (this.classList.contains('hot')) shootConfetti();
-  });
+    document.getElementById('qrModal').style.display = 'flex';
+    if (e.target.classList.contains('hot')) shootConfetti();
+  }
 });
+
+// =========================================
+// LOGIC CHO NÚT "CHO SẢ ĂN" (ỦNG HỘ TUỲ TÂM)
+// =========================================
+const feedBtn = document.getElementById('feedBtn');
+const feedModal = document.getElementById('feedModal');
+const closeFeed = document.querySelector('.close-feed');
+const doneFeedBtn = document.getElementById('doneFeedBtn');
+
+if(feedBtn && feedModal) {
+  // Mở modal khi bấm vào bụng gấu
+  feedBtn.addEventListener('click', () => {
+    feedModal.style.display = 'flex';
+    if(typeof shootConfetti === 'function') shootConfetti();
+  });
+
+  // Đóng modal khi bấm nút X
+  if(closeFeed) {
+    closeFeed.addEventListener('click', () => {
+      feedModal.style.display = 'none';
+    });
+  }
+
+  // Bấm nút Đã cho ăn xong
+  if(doneFeedBtn) {
+    doneFeedBtn.addEventListener('click', () => {
+      alert('Sả đã nhận được tình yêu thương! Cảm ơn boss nhiều lắm 💖');
+      feedModal.style.display = 'none';
+      if(typeof shootConfetti === 'function') shootConfetti();
+    });
+  }
+
+  // Bấm ra ngoài rìa để đóng modal
+  feedModal.addEventListener('click', (e) => {
+    if (e.target === feedModal) {
+      feedModal.style.display = 'none';
+    }
+  });
+}
 
   // FAQ accordion
   const faqQs = document.querySelectorAll('.faq-q');
@@ -288,9 +385,11 @@ const diaryEntries = [
   "Chị B chuyển 200k, tui vừa mua trà sữa đào",
   "Anh C nuôi gói VIP, tui vừa đi Starbucks xong",
   "Chị D gửi 5 triệu, tui mua iPhone 15 Pro Max rồi nha",
+  "Anh Nắng gửi 100 nghìn, tui mua jollibee đớp hết rồi nha",
+  "Mèo gửi 50 k, đủ 2 cái cánh gà",
   "Cảm ơn anh E đã nuôi tui cả năm, tui béo lên 4kg rồi",
   "Hôm nay tui đi ăn nhà hàng nhờ tiền của các boss F",
-  "Cảm ơn anh Kiên đã tài trợ tôi làm tóc",
+  "Cảm ơn anh K đã tài trợ tôi làm tóc",
   "Anh Hùng chuyển tiền mua đùi gà cho Bii",
   "Tui vừa đặt vé đi Đà Lạt nhờ chị G nuôi gói Ultra",
   "Vừa nhận được tiền làm móng từ anh Linh",
@@ -389,6 +488,55 @@ document.querySelectorAll('.btn[data-pack="Gói Ultra VIP"]').forEach(btn => {
     setTimeout(() => document.body.classList.remove('ultra-vip-shake'), 1000);
   });
 });
+
+// =========================================
+// LOGIC CHUYỂN TAB (VỀ SẢ & GÓI NUÔI SẢ)
+// =========================================
+
+// Hàm chuyển Tab cho Gói Nuôi Sả
+window.openPackage = function(evt, pkgName) {
+  let i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("pkg-tab-content");
+  for (i = 0; i < tabcontent.length; i++) { 
+    tabcontent[i].classList.remove("active-content"); 
+  }
+  tablinks = document.getElementsByClassName("pkg-tab-btn");
+  for (i = 0; i < tablinks.length; i++) { 
+    tablinks[i].classList.remove("active"); 
+  }
+  document.getElementById(pkgName).classList.add("active-content");
+  evt.currentTarget.classList.add("active");
+};
+
+// Hàm chuyển Tab cho phần Về Sả (Giới thiệu, Album, Liên hệ)
+window.openAbout = function(evt, aboutName) {
+  let i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("about-tab-content");
+  for (i = 0; i < tabcontent.length; i++) { 
+    tabcontent[i].classList.remove("active-content"); 
+  }
+  tablinks = document.getElementsByClassName("about-tab-btn");
+  for (i = 0; i < tablinks.length; i++) { 
+    tablinks[i].classList.remove("active"); 
+  }
+  document.getElementById(aboutName).classList.add("active-content");
+  evt.currentTarget.classList.add("active");
+};
+
+// Hàm chuyển Tab cho Lời nhận xét
+window.openTestimonial = function(evt, tabName) {
+  let i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("testi-tab-content");
+  for (i = 0; i < tabcontent.length; i++) { 
+    tabcontent[i].classList.remove("active-content"); 
+  }
+  tablinks = document.getElementsByClassName("testi-tab-btn");
+  for (i = 0; i < tablinks.length; i++) { 
+    tablinks[i].classList.remove("active"); 
+  }
+  document.getElementById(tabName).classList.add("active-content");
+  evt.currentTarget.classList.add("active");
+};
 
 // Dark Mode Toggle + lưu trạng thái
 // const darkToggle = document.getElementById('darkToggle');
