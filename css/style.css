@@ -660,76 +660,133 @@ Back to Top – rocket cute
   transform: scale(1.15);
 }
 
-/* --- RESPONSIVE CHO CÁC TABS (MOBILE) --- */
 /* =========================================
-   TỐI ƯU SIÊU GỌN GÀNG CHO MOBILE (< 768px)
+   BỘ CSS MOBILE HOÀN CHỈNH (< 768px)
+   (Bao gồm: Menu Đáy, Về Sả, Gói Nuôi Siêu Gọn)
 ========================================= */
 @media (max-width: 768px) {
+
   /* 1. Thu gọn khoảng trống thừa của các Section */
-  .hero { padding: 100px 15px 50px !important; }
+  .hero { padding: 90px 15px 40px !important; }
   .about, .tools-section, .packages-section, 
   .transparency, .testimonials, .faq, .referral, .diary { 
-    padding: 45px 0 !important; 
+    padding: 35px 0 !important; 
   }
-  .section-title { font-size: 2rem !important; margin-bottom: 30px !important; }
+  .section-title { font-size: 1.8rem !important; margin-bottom: 25px !important; }
 
-  /* 2. Thu nhỏ con gấu và chỉ số trên mobile */
-  .hero h1 { font-size: 3rem !important; }
-  .subtitle { font-size: 1.1rem !important; margin-bottom: 30px !important; }
-  .cute-pet { transform: scale(0.85); margin: 30px auto 10px !important; }
-  .stats { gap: 20px !important; }
-  .stat h3 { font-size: 2.5rem !important; }
+  /* 2. Thu nhỏ con gấu và chỉ số */
+  .hero h1 { font-size: 2.8rem !important; }
+  .subtitle { font-size: 1rem !important; margin-bottom: 25px !important; }
+  .cute-pet { transform: scale(0.8); margin: 20px auto 10px !important; }
+  .stats { gap: 15px !important; }
+  .stat h3 { font-size: 2.2rem !important; }
+  .stat p { font-size: 0.95rem !important; }
 
-  /* 3. Thanh Menu Đáy (Mobile Bottom Nav Bar) */
+  /* 3. PHẦN "VỀ SẢ" (GIỚI THIỆU) - ẢNH TRÊN, CHỮ DƯỚI */
+  .about-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 20px !important;
+  }
+  .about-img {
+    width: 100% !important;
+    max-width: 220px !important;
+    height: auto !important;
+    border-radius: 20px !important;
+    margin: 0 auto !important;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12) !important;
+  }
+  .about-text { text-align: left !important; }
+  .about-text p {
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 10px !important;
+  }
+
+  /* 4. TỐI ƯU SIÊU NHỎ VÀ GỌN CHO CÁC GÓI NUÔI SẢ (KỂ CẢ TAB FAN) */
+  .packages {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 15px !important;
+    padding: 0 !important;
+  }
+  .package {
+    width: 100% !important;
+    max-width: 300px !important; /* Khung hẹp lại vừa vặn tay cầm */
+    border-radius: 18px !important;
+    margin: 0 auto !important;
+  }
+  .package-header { padding: 18px 10px !important; }
+  .package-header h3 { font-size: 1.25rem !important; } /* Tên gói nhỏ lại */
+  .price { font-size: 2rem !important; margin: 5px 0 !important; } /* Giá tiền nhỏ lại */
+  .price span { font-size: 1.2rem !important; }
+  .price small { font-size: 0.85rem !important; }
+
+  .features ul { padding: 0 15px !important; }
+  .features li {
+    padding: 8px 0 !important;
+    font-size: 0.88rem !important; /* Chữ các dòng tính năng nhỏ nhắn */
+    gap: 8px !important;
+  }
+  .features i { padding-bottom: 0 !important; font-size: 0.9rem !important; }
+
+  .btn {
+    width: 90% !important;
+    padding: 10px 15px !important;
+    font-size: 0.95rem !important; /* Chữ trên nút bấm nhỏ gọn */
+    margin: 15px auto !important;
+  }
+
+  .package.ultra-vip { margin-top: 15px !important; }
+  .package.ultra-vip .price { font-size: 2.2rem !important; }
+
+  /* 5. KHÔI PHỤC THANH MENU ĐÁY (MOBILE BOTTOM NAV) */
   .mobile-bottom-nav {
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    height: 60px;
-    background: #ffffff;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    box-shadow: 0 -3px 15px rgba(0, 0, 0, 0.12);
-    z-index: 9999;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    position: fixed !important;
+    bottom: 0 !important; left: 0 !important; right: 0 !important;
+    height: 60px !important;
+    background: #ffffff !important;
+    display: flex !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+    box-shadow: 0 -3px 15px rgba(0, 0, 0, 0.12) !important;
+    z-index: 9999 !important;
+    border-top-left-radius: 20px !important;
+    border-top-right-radius: 20px !important;
   }
-  
   .mobile-bottom-nav .nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #888;
-    text-decoration: none;
-    font-size: 0.75rem;
-    font-weight: 600;
-    width: 20%;
-    transition: 0.2s;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #888 !important;
+    text-decoration: none !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    width: 20% !important;
   }
-
   .mobile-bottom-nav .nav-item i {
-    font-size: 1.25rem;
-    margin-bottom: 3px;
+    font-size: 1.2rem !important;
+    margin-bottom: 2px !important;
   }
-
   .mobile-bottom-nav .nav-item.active,
   .mobile-bottom-nav .nav-item:hover {
-    color: var(--main);
+    color: var(--main) !important;
   }
 
-  /* Tạo khoảng trống dưới cùng để nội dung không bị thanh Menu Đáy che mất */
+  /* Tránh bị thanh menu che mất chân trang */
   body { padding-bottom: 70px !important; }
   
-  /* Thu gọn chiều cao bảng thu chi trên mobile */
+  /* Bảng thu chi gọn hơn */
   .trans-table {
-    max-height: 350px;
-    overflow-y: auto;
-    border: 2px solid var(--main);
+    max-height: 300px !important;
+    overflow-y: auto !important;
   }
 }
 
-/* Ẩn thanh Menu Đáy khi xem trên Máy tính */
+/* Ẩn Menu Đáy khi lên Màn hình Máy tính */
 @media (min-width: 769px) {
   .mobile-bottom-nav { display: none !important; }
 }
