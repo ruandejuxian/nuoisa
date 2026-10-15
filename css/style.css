@@ -90,7 +90,7 @@ header { position:fixed; top:0; left:0; right:0; background:var(--main); color:#
 }
 .package-header { background:var(--main); color:#fff; padding:45px 20px; text-align:center; }
 .package-header h3 { font-size:2.1rem; }
-.price { font-size:3.6rem; font-weight:900; margin:15px 0; }
+.price { font-size:2rem; font-weight:900; margin:15px 0; }
 .price span { font-size:2.2rem; }
 .features ul { list-style:none; padding:0 35px; }
 .features li { padding:15px 0; display:flex; align-items:center; gap:18px; font-size:1.15rem; border-bottom:1px solid #eee; }
