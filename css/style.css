@@ -661,26 +661,77 @@ Back to Top – rocket cute
 }
 
 /* --- RESPONSIVE CHO CÁC TABS (MOBILE) --- */
+/* =========================================
+   TỐI ƯU SIÊU GỌN GÀNG CHO MOBILE (< 768px)
+========================================= */
 @media (max-width: 768px) {
-  /* Ép các grid item thu nhỏ lại một chút để không bị tràn trên điện thoại */
-  .testimonial-grid, .packages { 
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+  /* 1. Thu gọn khoảng trống thừa của các Section */
+  .hero { padding: 100px 15px 50px !important; }
+  .about, .tools-section, .packages-section, 
+  .transparency, .testimonials, .faq, .referral, .diary { 
+    padding: 45px 0 !important; 
+  }
+  .section-title { font-size: 2rem !important; margin-bottom: 30px !important; }
+
+  /* 2. Thu nhỏ con gấu và chỉ số trên mobile */
+  .hero h1 { font-size: 3rem !important; }
+  .subtitle { font-size: 1.1rem !important; margin-bottom: 30px !important; }
+  .cute-pet { transform: scale(0.85); margin: 30px auto 10px !important; }
+  .stats { gap: 20px !important; }
+  .stat h3 { font-size: 2.5rem !important; }
+
+  /* 3. Thanh Menu Đáy (Mobile Bottom Nav Bar) */
+  .mobile-bottom-nav {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 60px;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -3px 15px rgba(0, 0, 0, 0.12);
+    z-index: 9999;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
   }
   
-  /* Giúp các nút tab tự động xuống dòng và dãn đều trên mobile */
-  .testimonial-tabs, .package-tabs { 
-    flex-direction: column; align-items: center; gap: 10px; 
+  .mobile-bottom-nav .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    width: 20%;
+    transition: 0.2s;
   }
-  .testi-tab-btn, .pkg-tab-btn { 
-    width: 100%; max-width: 320px; text-align: center; font-size: 1rem; padding: 12px 20px;
+
+  .mobile-bottom-nav .nav-item i {
+    font-size: 1.25rem;
+    margin-bottom: 3px;
   }
+
+  .mobile-bottom-nav .nav-item.active,
+  .mobile-bottom-nav .nav-item:hover {
+    color: var(--main);
+  }
+
+  /* Tạo khoảng trống dưới cùng để nội dung không bị thanh Menu Đáy che mất */
+  body { padding-bottom: 70px !important; }
   
-  .about-menu {
-    gap: 15px; flex-wrap: wrap;
+  /* Thu gọn chiều cao bảng thu chi trên mobile */
+  .trans-table {
+    max-height: 350px;
+    overflow-y: auto;
+    border: 2px solid var(--main);
   }
-  .about-tab-btn {
-    font-size: 1.1rem;
-  }
+}
+
+/* Ẩn thanh Menu Đáy khi xem trên Máy tính */
+@media (min-width: 769px) {
+  .mobile-bottom-nav { display: none !important; }
 }
 
 /* Responsive */

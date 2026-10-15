@@ -538,6 +538,35 @@ window.openTestimonial = function(evt, tabName) {
   evt.currentTarget.classList.add("active");
 };
 
+// =========================================
+// LOGIC CHUYỂN MỤC TRÊN MOBILE BOTTOM NAV
+// =========================================
+function scrollToSection(evt, sectionId) {
+  evt.preventDefault();
+  
+  // Highlight nút được chọn
+  const navItems = document.querySelectorAll('.mobile-bottom-nav .nav-item');
+  navItems.forEach(item => item.classList.remove('active'));
+  evt.currentTarget.classList.add('active');
+
+  // Cuộn trang
+  if (sectionId === 'hero') {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
+    const targetEl = document.getElementById(sectionId) || document.querySelector('.' + sectionId);
+    if (targetEl) {
+      const headerOffset = 70;
+      const elementPosition = targetEl.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  }
+}
+
 // Dark Mode Toggle + lưu trạng thái
 // const darkToggle = document.getElementById('darkToggle');
 // if (darkToggle) {
